@@ -8,10 +8,10 @@ import sqlite3
 from _sqlite3 import Error, DatabaseError
 from decimal import Decimal
 import time
-from selenium import webdriver
-
-driver = webdriver.Chrome()
-driver.implicitly_wait(30)
+# from selenium import webdriver
+#
+# driver = webdriver.Chrome()
+# driver.implicitly_wait(30)
 
 # try:
 #     SCROLL_PAUSE_TIME = 0.5
