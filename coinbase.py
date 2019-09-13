@@ -80,6 +80,18 @@ def create_connection(db_file):
         if conn:
             conn.close()
 
+def create_table(conn, create_table_sql):
+    """ create a table from the create_table_sql statement
+    :param conn: Connection object
+    :param create_table_sql: a CREATE TABLE statement
+    :return:
+    """
+    try:
+        c = conn.cursor()
+        c.execute(create_table_sql)
+    except Error as e:
+        print(e)
+
 if __name__ == '__main__':
     count=1
     URL="https://www.coinbase.com/price"
@@ -93,7 +105,7 @@ if __name__ == '__main__':
             print()
         count+=1
 
-    conn = create_connection("~/Documents/crypto/Stock/database.db")
+    conn = create_connection("~/Documents/crypto/webscrapper/database.db")
     if conn is not None:
         create_table(conn, sql_create_coin_data_table)
     else:
