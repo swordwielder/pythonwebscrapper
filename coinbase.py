@@ -62,14 +62,8 @@ def getHTML(url):
     return soup
 
 def create_connection(db_file):
-    """ create a database connection to a SQLite database """
-    sql_create_coin_data_table= """ CREATE TABLE IF NOT EXISTS CoinData (
-                                    id integer PRIMARY KEY NOT NULL,
-                                    Coinname text,
-                                    acronym text,
-                                    price double,
-                                    market_cap double
-                                ); """
+
+
     conn = None
     try:
         conn = sqlite3.connect(db_file)
@@ -92,6 +86,8 @@ def create_table(conn, create_table_sql):
     except Error as e:
         print(e)
 
+
+
 if __name__ == '__main__':
     count=1
     URL="https://www.coinbase.com/price"
@@ -105,6 +101,14 @@ if __name__ == '__main__':
             print()
         count+=1
 
+    sql_create_coin_data_table=  """ CREATE TABLE IF NOT EXISTS CoinData (
+                                    id integer PRIMARY KEY NOT NULL,
+                                    Coinname text,
+                                    acronym text,
+                                    price double,
+                                    market_cap double
+                                ); """
+    
     conn = create_connection("~/Documents/crypto/webscrapper/database.db")
     if conn is not None:
         create_table(conn, sql_create_coin_data_table)

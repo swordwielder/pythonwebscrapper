@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS CoinData (
+                                    id integer PRIMARY KEY NOT NULL,
+                                    Coinname text,
+                                    acronym text,
+                                    price double,
+                                    market_cap double
+                                );
